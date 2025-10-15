@@ -36,12 +36,15 @@ class SlamBase(ABC):
         self.slam_type = slam_type
         self.da_type = data_association
         self.update_type = update_type
+        self.Q = Q
+        self.W_z = np.linalg.inv(np.diag(self.Q))
 
         self.t = 0
 
         self.state_dim = 3  # The number of state variables: x, y, theta (initially).
         self.obs_dim = 2  # The number of variables per observation: range, bearing.
         self.lm_dim = 2  # The number of variables per landmark: x, y.
+        self.action_dim = 3
 
     @abstractmethod
     def predict(self, u, dt=None):

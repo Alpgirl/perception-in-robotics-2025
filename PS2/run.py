@@ -147,9 +147,9 @@ def validate_cli_args(args):
 def main():
     args = get_cli_args()
     validate_cli_args(args)
-
+    
     # weights for covariance action noise R and observation noise Q
-    alphas = np.array(args.alphas) **2 # variance of noise R proportional to alphas, see tools/tasks@get_motion_noise_covariance()
+    alphas = np.array(list(map(float, args.alphas))) **2 # variance of noise R proportional to alphas, see tools/tasks@get_motion_noise_covariance()
     bearing_std = args.bearing_std # see also filters/localization_filter.py
 
     mean_prior = np.array([180., 50., 0.])
@@ -242,7 +242,7 @@ def main():
                 sim_trajectory.covariance[:, :, t] = localization_filter.Sigma
 
             progress_bar.next()
-
+            
             if not update_plots:
                 continue
 

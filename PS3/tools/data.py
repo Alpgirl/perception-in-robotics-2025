@@ -268,7 +268,7 @@ def load_data(data_filename):
 
     if file_extension == 'npy':
         with np.load(data_filename) as data:
-            num_steps = np.asscalar(data['num_steps'])
+            num_steps = data['num_steps'].item() #np.asscalar(data['num_steps'])
             filter_data = SlamInputData(data['noise_free_motion'], data['real_observations'])
             debug_data = SlamDebugData(data['real_robot_path'],
                                        data['noise_free_robot_path'],

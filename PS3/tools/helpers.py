@@ -76,6 +76,22 @@ def get_cli_args():
                         action='store',
                         help='The FPS rate of the movie to write.',
                         default=10.)
+    parser.add_argument('--solve_iter',
+                        action='store_true',
+                        help='Solve the lsp problem on each time step.',
+                        default=True)
+    parser.add_argument('--plot_chi2',
+                        action='store_true',
+                        help='Plot the calculated chi2 error.',
+                        default=False)
+    parser.add_argument('--plot_matrices',
+                        action='store_true',
+                        help='Plot the adjacency and information matrices in the last step.',
+                        default=False)
+    parser.add_argument('--plot_iso_contours',
+                        action='store_true',
+                        help='Plot the n-sigma iso-contour of the last robot pose',
+                        default=False)
     return parser.parse_args()
 
 def validate_cli_args(args):
