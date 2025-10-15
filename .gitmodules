@@ -1,2 +1,3 @@
-[submodule "Filters-for-IMU-Attitude-Estimation/"]
+[submodule "project"]
+	path = project
 	url = https://github.com/Alpgirl/Filters-for-IMU-Attitude-Estimation
